@@ -33,7 +33,8 @@ import game_tools.Sound;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton; 
+	private JButton fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -79,7 +80,13 @@ public class Jeopardy implements ActionListener {
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 		thirdButton = createButton("$600");
 		quizPanel.add(thirdButton);
-		third
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
+		fifthButton = createButton("$1000");
+		quizPanel.add(fifthButton);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
 		 /*
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
@@ -114,11 +121,28 @@ public class Jeopardy implements ActionListener {
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-		if(buttonPressed == firstButton) {
-			askQuestion("What was the war called between the Ancient Greek city states Athens and Sparta." , "The Peloponnesian War", 200 );
+		if(buttonPressed == secondButton) {
+			askQuestion("What was the war called between the Ancient Greek city states Athens and Sparta?" , "The Peloponnesian War", 200 );
+			secondButton.setVisible(false);
 		}
+		
 			// Call the askQuestion() method
- 
+		if(buttonPressed == firstButton) {
+			askQuestion("What is the Greek god of war called?", "Ares", 400);
+			firstButton.setVisible(false);
+		}
+		if(buttonPressed == thirdButton) {
+			askQuestion("What two countries fought in the Punic Wars(put shorter country first add comas) ?" , "Rome,Carthage", 600);
+			thirdButton.setVisible(false);
+		}
+		if(buttonPressed == fourthButton) {
+			askQuestion("The Thirty-Tyrants where from which city state?", "Sparta", 800);
+			fourthButton.setVisible(false);
+		}
+		if(buttonPressed == fifthButton) {
+			askQuestion("What was the name of the brass knuckes that some soilders would use in hand to hand combat called?", "cestus",1000);
+			fifthButton.setVisible(false);
+		}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton
@@ -142,7 +166,7 @@ public class Jeopardy implements ActionListener {
 		if(answer.equalsIgnoreCase(correctAnswer)) {
 			score+=prizeMoney;
 			// Increase the score by the prizeMoney
-
+		
 			// Pop up a message to tell the user they were correct
 	JOptionPane.showMessageDialog(null, "You got the answer correct good job");
 		
