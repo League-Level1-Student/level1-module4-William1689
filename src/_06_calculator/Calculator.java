@@ -37,6 +37,7 @@ public class Calculator implements ActionListener {
 	 panel.add(divide);
 	 panel.add(num1);
 	 panel.add(num2);
+	label.setBounds(250, 350, 100, 100);
 	 add.setBounds(100,250 ,50, 50);	
 	 subtract.setBounds(175,250,50,50);
 	 multiply.setBounds(250,250,50,50);
@@ -47,7 +48,8 @@ public class Calculator implements ActionListener {
 	 subtract.addActionListener(this);
 	 multiply.addActionListener(this);
 	 divide.addActionListener(this);
-	 frame.pack();
+ frame.pack();
+	 
 	
  }
 
@@ -61,6 +63,73 @@ public static void main(String[] args) {
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-	
+	JButton b = (JButton) e.getSource();
+	if(b == add) {
+		
+		int input1= Integer.parseInt(num1.getText());
+		int input2= Integer.parseInt(num2.getText());
+		int answer = input1 + input2;
+		
+		label.setText(  String.valueOf(answer)    );
+		
 }
+if(b == subtract) {
+	int input1= Integer.parseInt(num1.getText());
+	int input2= Integer.parseInt(num2.getText());
+	int answer = input1 - input2;
+	
+	label.setText(  String.valueOf(answer)    );
+}
+if (b == multiply) {
+	int input1= Integer.parseInt(num1.getText());
+	int input2= Integer.parseInt(num2.getText());
+	int answer = input1 * input2;
+	
+	label.setText(  String.valueOf(answer)    );
+}
+if (b == divide) {
+	int input1= Integer.parseInt(num1.getText());
+	int input2= Integer.parseInt(num2.getText());
+	int answer = input1 / input2;
+	
+	label.setText(  String.valueOf(answer)    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
