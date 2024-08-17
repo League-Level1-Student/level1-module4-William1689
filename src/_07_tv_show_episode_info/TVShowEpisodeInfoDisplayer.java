@@ -18,19 +18,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class TVShowEpisodeInfoDisplayer implements ActionListener {
+	JFrame frame = new JFrame();
+	JButton button = new JButton();
+	JTextField text = new JTextField();
+	JPanel panel = new JPanel();
 	
 	public TVShowEpisodeInfoDisplayer() {
-		JFrame frame = new JFrame();
-		JButton button = new JButton();
-		JTextField text = new JTextField();
-		JPanel panel = new JPanel();
 		
 		frame.setVisible(true);
-		 panel.setPreferredSize(new Dimension(500,500));
+		frame.setTitle("TV Show Thingy");
+		frame.setSize(200, 100);
+		panel.setPreferredSize(new Dimension(500,500));
 		 frame.add(panel);
-		 text.setBounds(250, 250, 100, 100);
+		 text.setBounds(25,25,70,20);
 		 panel.add(text);
-		 button.setBounds(350, 250, 100, 100);
+		panel.setLayout(null);
+		button.setText("Submit");
+		button.setBounds(125, 25, 50, 20);
 		 panel.add(button);
 		 button.addActionListener(this);
 		
@@ -102,9 +106,10 @@ public class TVShowEpisodeInfoDisplayer implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		JButton b = (JButton) e.getSource();
-		if(b == button) { 
+		
+		
+		JOptionPane.showMessageDialog(null,getShowEpisodeData(text.getText()));
 			
-		}
+		
 	}
 }
