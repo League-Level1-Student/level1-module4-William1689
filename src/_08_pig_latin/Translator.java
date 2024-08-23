@@ -62,5 +62,9 @@ public void actionPerformed(ActionEvent e) {
 	if(b == button) {
 		text2.setText(PigLatinTranslator.translateEnglishToPigLatin(text.getText()));
 	}
+	
+	if(b == button2) {
+		text.setText(PigLatinTranslator.translatePigLatinToEnglish(text2.getText()));
+	}
 }
 }
