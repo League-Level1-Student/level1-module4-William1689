@@ -20,7 +20,7 @@ public class WhackAMole implements ActionListener {
 	Random ran = new Random();
 	int moleHit = 0;
 	int moleMiss = 0;
-
+Date gameStart;
 	public void run() {
 		// frame.setSize(700, 700);
 		panel.setPreferredSize(new Dimension(700, 150));
@@ -30,12 +30,15 @@ public class WhackAMole implements ActionListener {
 		frame.add(panel);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		
+		
 	}
 
 	public void drawButton(int i) {
-		int num = ran.nextInt(i);
-		while (0 <= i) {
+
+		int num = 1+ran.nextInt(i);
+		while (i > 0) {
 
 			JButton button = new JButton("             ");
 			// button.setBounds(i, i, i, i);
@@ -72,6 +75,8 @@ public class WhackAMole implements ActionListener {
 		Date timeAtEnd = new Date();
 		JOptionPane.showMessageDialog(null, "Your whack rate is "
 				+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked) + " moles per second.");
+		moleHit = 0;
+		moleMiss =0;
 	}
 
 	private void playSound(String fileName) {
@@ -90,15 +95,21 @@ public class WhackAMole implements ActionListener {
 		// TODO Auto-generated method stub
 		JButton b = (JButton) e.getSource();
 		if (b.getText().equalsIgnoreCase("mole ._.")) {
-			moleHit += 1;
+			if(moleHit == 0) {
+				gameStart = new Date();
+			}
 			
+			moleHit += 1;
+		
 
 		} else {
 		
 			moleMiss ++;
 			
 		}
-		
+		if(moleHit>=10) {
+			endGame(gameStart,10);
+		}
 		panel.removeAll();
 		drawButton(24);
 
