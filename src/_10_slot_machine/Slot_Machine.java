@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -38,6 +39,7 @@ public class Slot_Machine implements ActionListener {
 	JLabel poop3;
 	int balance = 100;
 	int winning = 10;
+	int score = 0;
 	Random ran = new Random();
 
 	public void run() {
@@ -125,6 +127,7 @@ public class Slot_Machine implements ActionListener {
 		JButton b = (JButton) e.getSource();
 		if(b == button) {
 			winning+=10;
+			score++;
 			balance-=5;
 			money.setText("Bank Account Balance: $" + balance);
 			amount.setText("Amount to Win: $"+winning);
@@ -132,6 +135,12 @@ public class Slot_Machine implements ActionListener {
 			int slot2 = ran.nextInt(4);
 			int slot3 = ran.nextInt(4);
 			panelMaddox.removeAll();
+			if(balance<-0) {
+				JOptionPane.showMessageDialog(null, "You ran out of money, come back when you have more. Your final score was: "+ score);
+			
+				
+			}
+			
 			if(slot1 == 0) {
 				panelMaddox.add(sad);
 				
@@ -179,6 +188,30 @@ public class Slot_Machine implements ActionListener {
 			if(slot3 == 3) {
 				panelMaddox.add(happy3);
 				
+			}
+			if(slot1 == 0 && slot2 == 0 && slot3 == 0) {
+				balance+= winning;
+				winning = 10;
+			}
+			if(slot1 == 3 && slot2 == 0 && slot3 == 0) {
+				balance+= winning;
+				winning = 10;
+			}
+			if(slot1 == 1 && slot2 == 1 && slot3 == 1) {
+				balance-= winning/4;
+			
+			}
+			if(slot1 == 1 && slot2 == 3 && slot3 == 1) {
+				balance-= winning/4;
+				
+			}
+			if(slot1 == 2 && slot2 == 2 && slot3 == 2) {
+				balance+= winning;
+				winning = 10;
+			}
+			if(slot1 == 2 && slot2 == 2 && slot3 == 3) {
+				balance+= winning;
+				winning = 10;
 			}
 			panelMaddox.repaint();
 			
