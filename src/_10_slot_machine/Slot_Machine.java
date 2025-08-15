@@ -33,7 +33,7 @@ public class Slot_Machine implements ActionListener {
 	JLabel poop;
 	JLabel happy2 ;
 	JLabel sad2 ;
-	JLabel poop2;
+	JLabel poop2; 
 	JLabel happy3 ;
 	JLabel sad3 ;
 	JLabel poop3;
